@@ -1,14 +1,39 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-def f(x, funktion):
+def f(x: float, funktion: str) -> float:
+    """Berechnet den Funktionswert für eine gegebene Funktion und Variable x
+
+    Args:
+        x (float): Funktionsvariable
+        funktion (str): Funktion als string
+
+    Raises:
+        ValueError: Bei Fehler in der Funktion wird ein ValueError mit einer Fehlermeldung ausgelöst
+
+    Returns:
+        float: Funktionswert wird als float zurückgegeben
+    """
+
     try:
         return eval(funktion)
     except Exception as fehler:
         raise ValueError(f"Fehler in der Funktion: {fehler}")
 
 
-def bisektion_iterationen(funktion, a, b, epsilon = 0.000001):
+def bisektion_iterationen(funktion: str, a: float, b: float, epsilon: float = 0.000001) -> list:
+    """Führt das Bisektionsverfahren aus und speichert alle Iterationen
+
+    Args:
+        funktion (str): Funktion als string
+        a (float): 1. Intervallsgrenze
+        b (float): 2. Intervallsgrenze
+        epsilon (float, optional): Genauigkeit
+
+    Returns:
+        list: Liste mit allen Iterationen (a, b, c, fc)
+    """
+
     iterationen = []
 
     while True:
@@ -28,7 +53,17 @@ def bisektion_iterationen(funktion, a, b, epsilon = 0.000001):
     return iterationen
     
 
-def plotter(iterationen, funktion, a, b):
+def plotter(iterationen: list, funktion: str, a: float, b: float) -> None:
+    """Visualisieren der Iterationen des Bisektionsverfahrens
+
+    Args:
+        iterationen (list): Liste mit allen Iterationen (a, b, c, fc)
+        funktion (str): Funktion als string
+        a (float): 1. Intervallsgrenze
+        b (float): 2. Intervallsgrenze
+    """
+
+
     lösung = []
     genaugkeit = []
 
@@ -67,10 +102,18 @@ def plotter(iterationen, funktion, a, b):
 
 
 
-if __name__ == "__main__":
+def solver() -> None:
+    """Führt die berechnung und Visualisierung, mit gewünschten zahlwerten
+    """
+    
+    
     funktion = "x**2 - 67"
     a = 0
     b = 2 * 67
     
     iterationen = bisektion_iterationen(funktion, a, b)
     plotter(iterationen, funktion, a, b)
+
+
+if __name__ == "__main__":
+    solver()
