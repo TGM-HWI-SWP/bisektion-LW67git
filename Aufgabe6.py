@@ -68,7 +68,8 @@ def regula_falsi(funktion: str, a: float, b: float, epsilon:float = 0.00001) -> 
         print(f"Fehler: {fehler}")
         return 0, 0
         
-def wurzel_regula_falsi(n):
+def wurzel_regula_falsi_solver(n):
+    # Verwendet zum Testen und vergleichen der numerischen Näherung mit der analytischen Lösung der Quadratwurzel von n
 
     funktion = f"x**2 - {n}"
 
@@ -87,19 +88,22 @@ def wurzel_regula_falsi(n):
 
 
 def solver2():
-    print("Aufgabe 1: ")
-    wurzel_regula_falsi(67)
-    print("Aufgabe 2: ")
-    wurzel_regula_falsi(19)
-    print("Aufgabe 5.1: ")
-    wurzel_regula_falsi(25)
-    print("Aufgabe 5.2: ")
-    wurzel_regula_falsi(81)
-    print("Aufgabe 5.3: ")
-    wurzel_regula_falsi(144)
+    funktion = input("Gib die Funktion ein: ")
+
+    try:
+        a = float(input("Gib die erste Intervallsgrenze ein: "))
+        b = float(input("Gib die zweite Intervallsgrenze ein: "))
+        epsilon = float(input("Gib die Genauigkeit ein: "))
+
+        näherung, iterationen = regula_falsi(funktion, a, b, epsilon)
+        
+        print(f"Näherung: {näherung}, Iterationen: {iterationen}")
+
+    except ValueError as fehler:
+        print(f"Fehler: {fehler}")
+
 
 
 
 if __name__ == "__main__":
-    
     solver2()

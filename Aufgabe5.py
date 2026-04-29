@@ -68,7 +68,9 @@ def bisektion(funktion: str, a: float, b: float, epsilon:float = 0.00001) -> Tup
         print(f"Fehler: {fehler}")
         return 0, 0
         
-def wurzel_bisektion(n):
+
+def wurzel_bisektiont_solver(n):
+    # Verwendet zum Testen und vergleichen der numerischen Näherung mit der analytischen Lösung der Quadratwurzel von n
 
     funktion = f"x**2 - {n}"
 
@@ -78,6 +80,7 @@ def wurzel_bisektion(n):
     näherung, iterationen = bisektion(funktion, a, b)
     analytisch = math.sqrt(n)
 
+    print("-" * 50)
     print(f"n =     {n}")
     print(f"Näherung:       {näherung}")
     print(f"Exakter Punkt:      {analytisch}")
@@ -87,9 +90,19 @@ def wurzel_bisektion(n):
 
 
 def solver():
-    wurzel_bisektion(25)
-    wurzel_bisektion(81)
-    wurzel_bisektion(144)
+    funktion = input("Gib die Funktion ein: ")
+
+    try:
+        a = float(input("Gib die erste Intervallsgrenze ein: "))
+        b = float(input("Gib die zweite Intervallsgrenze ein: "))
+        epsilon = float(input("Gib die Genauigkeit ein: "))
+
+        näherung, iterationen = bisektion(funktion, a, b, epsilon)
+        
+        print(f"Näherung: {näherung}, Iterationen: {iterationen}")
+
+    except ValueError as fehler:
+        print(f"Fehler: {fehler}")
 
 
 if __name__ == "__main__":
