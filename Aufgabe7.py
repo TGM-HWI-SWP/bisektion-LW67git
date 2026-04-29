@@ -1,24 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
-
-def f(x: float, funktion: str) -> float:
-    """Berechnet den Funktionswert für eine gegebene Funktion und Variable x
-
-    Args:
-        x (float): Funktionsvariable
-        funktion (str): Funktion als string
-
-    Raises:
-        ValueError: Bei Fehler in der Funktion wird ein ValueError mit einer Fehlermeldung ausgelöst
-
-    Returns:
-        float: Funktionswert wird als float zurückgegeben
-    """
-
-    try:
-        return eval(funktion)
-    except Exception as fehler:
-        raise ValueError(f"Fehler in der Funktion: {fehler}")
+from Aufgabe5 import f
 
 
 def bisektion_iterationen(funktion: str, a: float, b: float, epsilon: float = 0.000001) -> list:
@@ -40,11 +22,14 @@ def bisektion_iterationen(funktion: str, a: float, b: float, epsilon: float = 0.
         c = (a + b) / 2
         fc = f(c, funktion)
 
+        #speichert aktuelles Intervall und Näherung der Nullstelle
         iterationen.append((a, b, c, fc))
 
+        #Abbruchbedingung
         if abs(fc) <= epsilon:
             break
 
+        #Intervall wird halbiert (Vorzeichenwechsel prüfen)
         if f(a, funktion) * fc < 0:
             b = c
         else:
@@ -65,8 +50,9 @@ def plotter(iterationen: list, funktion: str, a: float, b: float) -> None:
 
 
     lösung = []
-    genaugkeit = []
+    genauigkeit = []
 
+    #Erzeugt x-Werte für den Funktionsgraphen
     x = np.linspace(a, b, 500)
     y = [f(xi, funktion) for xi in x]
 
@@ -74,25 +60,28 @@ def plotter(iterationen: list, funktion: str, a: float, b: float) -> None:
 
     for a, b, c, fc in iterationen:
         lösung.append(c)
-        genaugkeit.append(abs(fc))
+        genauigkeit.append(abs(fc))
 
         plt.clf()
 
-        plt.subplot(3, 1, 1)
+        #Diagramm 1: Funktion und Intervall
+        plt.subplot(2, 1, 1)
         plt.plot(x,y)
         plt.axhline(0, color='red', linestyle='--')
         plt.axvline(c, color='green', linestyle='--')
         plt.axvline(a, color='blue', linestyle='--')
         plt.axvline(b, color='orange', linestyle='--')
         plt.title("Bisektion: Funktion und Intervall")
+        plt.xlabel("x-Werte")
+        plt.ylabel("f(x)")
 
-        plt.subplot(3, 1, 2)
-        plt.plot(genaugkeit)
+        #Diagramm 2: Genauigkeit der Näherung
+        plt.subplot(2, 1, 2)
+        plt.plot(genauigkeit)
         plt.title("Genauigkeit der Näherung")
+        plt.xlabel("Iteration")
+        plt.ylabel("|f(c)|")
 
-        plt.subplot(3, 1, 3)
-        plt.plot(lösung)
-        plt.title("Näherung der Nullstelle")
 
         plt.tight_layout()
         plt.pause(0.5)
@@ -107,10 +96,10 @@ def solver() -> None:
     """
     
     
-    funktion = "x**2 - 67"
-    a = 0
-    b = 2 * 67
-    
+    funktion = input("Gibt eine Funktion ein: ")
+    a = float(input("Gib die erste Intervallsgrenze ein: "))
+    b = float(input("Gib die zweite Intervallsgrenze ein: "))
+
     iterationen = bisektion_iterationen(funktion, a, b)
     plotter(iterationen, funktion, a, b)
 

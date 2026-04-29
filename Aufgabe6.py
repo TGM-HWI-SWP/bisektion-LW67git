@@ -58,9 +58,11 @@ def regula_falsi(funktion: str, a: float, b: float, epsilon:float = 0.00001) -> 
             
             if fa * fc < 0:
                 b = c
+                fb = fc
 
             elif fb * fc < 0:
                 a = c
+                fa = fc
 
             else:
                 raise ValueError("Fehler im Intervall")
@@ -87,20 +89,40 @@ def wurzel_regula_falsi_solver(n):
     print("-" * 50)
 
 
-def solver2():
-    funktion = input("Gib die Funktion ein: ")
+def solver2(funktion: str = None, a: float = None, b: float = None, epsilon: float = None) -> Tuple[float, int]:
+    """Führt das Regula Falsi-Verfahren aus, es kann entweder mit eingabe oder mit übergebenen werten arbeiten.
+
+    Args:
+        funktion (str, optional): funktion als string Default as None
+        a (float, optional): 1. Intervallsgrenze. Defaults to None.
+        b (float, optional): 2. Intervallsgrenze. Defaults to None.
+        epsilon (float, optional): Genauigkeit. Defaults to None.
+
+    Returns:
+        Tuple[float, int]: Näherung der Nullstelle, Anzahl der Iterationen
+    """
+
 
     try:
-        a = float(input("Gib die erste Intervallsgrenze ein: "))
-        b = float(input("Gib die zweite Intervallsgrenze ein: "))
-        epsilon = float(input("Gib die Genauigkeit ein: "))
+        if funktion is None:
+            funktion = input("Gib die Funktion ein: ")
+            a = float(input("Gib die erste Intervallsgrenze ein: "))
+            b = float(input("Gib die zweite Intervallsgrenze ein: "))
+            epsilon = float(input("Gib die Genauigkeit ein: "))
 
         näherung, iterationen = regula_falsi(funktion, a, b, epsilon)
         
-        print(f"Näherung: {näherung}, Iterationen: {iterationen}")
+        print("-" * 50)
+        print(f"Funktion: f(x) = {funktion}")
+        print(f"Näherung: {näherung}")
+        print(f"Iterationen: {iterationen}")
+        print("-" * 50)
+
+        return näherung, iterationen
 
     except ValueError as fehler:
         print(f"Fehler: {fehler}")
+        return 0,0
 
 
 

@@ -1,28 +1,26 @@
-from Aufgabe5 import bisektion
+from Aufgabe5 import solver
 
 
-def solver() -> None:
-    """Testet das Bisektionsverfahren mit der Funktion f(x) = 2*x + x**2 + 3*x**3 - x**4 im Intervall [3, 4] und verschiedenen Genauigkeiten
+def solver_aufgabe8() -> None:
+    """Testet das Bisektionsverfahren mit dem Polynom f(x) = 2*x + x**2 + 3*x**3 - x**4 im Intervall [3, 4] und verschiedenen Genauigkeiten
+
+        Returns: None
     """
+
     funktion = "2*x + x**2 + 3*x**3 - x**4"
     a = 3
     b = 4
-    näherung1, iterationen1 = bisektion(funktion, a, b, epsilon=0.01)
 
-    näherung2, iterationen2 = bisektion(funktion, a, b, epsilon=0.000001)
-
-    print("-" * 50 )
-    print("Funktion: f(x) = 2*x + x**2 + 3*x**3 - x**4")
     
     print("-" * 50 )
     print("Genauigkeit: 0.01")
-    print(f"Näherung: {näherung1}, Iterationen: {iterationen1}")
+    solver(funktion, a, b, epsilon=0.01)
     print("-" * 50)
 
-    print("Genauigkeit: 0.000001")
-    print(f"Näherung: {näherung2}, Iterationen: {iterationen2}")
+    print("Genauigkeit: 0.00000001")
+    solver(funktion, a, b, epsilon=0.00000001)
     print("-" * 50)
 
 
 if __name__ == "__main__":
-    solver()
+    solver_aufgabe8()
