@@ -128,4 +128,18 @@ def solver2(funktion: str = None, a: float = None, b: float = None, epsilon: flo
 
 
 if __name__ == "__main__":
-    solver2()
+    print("Aufgabe 1")
+    wurzel_regula_falsi_solver(67)
+
+    print("Aufgabe 2")
+    wurzel_regula_falsi_solver(19)
+
+    print("Aufgabe 5.1")
+    wurzel_regula_falsi_solver(25)
+
+    print("Aufgabe 5.2")
+    wurzel_regula_falsi_solver(81)
+
+    print("Aufgabe 5.3")
+    wurzel_regula_falsi_solver(144)
+

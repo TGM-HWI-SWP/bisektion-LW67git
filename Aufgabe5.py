@@ -128,5 +128,6 @@ def solver(funktion: str = None, a: float = None, b: float = None, epsilon: floa
 
 
 if __name__ == "__main__":
-    
-    solver()
+    wurzel_bisektiont_solver(25)
+    wurzel_bisektiont_solver(81)
+    wurzel_bisektiont_solver(144)    

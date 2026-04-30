@@ -6,14 +6,16 @@
 Dieses Projekt dient als Vorlage für ein kleines Softwareentwicklungs- und Projektmanagement-Projekt. Es enthält verschiedene Aufgaben, die jeweils in separaten Dateien bearbeitet werden.
 
 ## Aufgaben
-- Aufgabe5.py: [Kurze Beschreibung der Aufgabe]
-- Aufgabe6.py: [Kurze Beschreibung der Aufgabe]
-- Aufgabe7.py: [Kurze Beschreibung der Aufgabe]
-- Aufgabe8.py: [Kurze Beschreibung der Aufgabe]
-- Aufgabe9.py: [Kurze Beschreibung der Aufgabe]
+- Aufgabe5.py: Nummerisches Lösen mithilfe von der Bisektions Methode (Test mit n Werten)
+- Aufgabe6.py: Nummerisches Lösen mithilfe von der Regula Falsi Methode (Test mit Werten aus Aufgabe 1,2,5)
+- Aufgabe7.py: Visualisieren von Nummerischen Verfahren
+- Aufgabe8.py: Genauigkeits überprüfung mittels Solver von Aufgabe 5
+- Aufgabe9.py: Praktisches Anwenden vom Code aus Aufgabe 5 und 6, um die Länge einer Leitung zum Berechnen
 
 ## Voraussetzungen
-- Python 3.x
+- Python 3.14
+- pip install matplotlib
+- pip install numpy
 
 ## Ausführung
 Jede Aufgabe kann einzeln ausgeführt werden:
