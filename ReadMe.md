@@ -23,5 +23,6 @@ Jede Aufgabe kann einzeln ausgeführt werden:
 
 ## Projektstruktur
 - `Aufgabe5.py` bis `Aufgabe9.py`: Implementierungen der einzelnen Aufgaben
+- `Projekt-Protokoll-Bisektion_Wendt.docx`: Protokoll der Aufgaben
 - `ReadMe.md`: Diese Datei
 - `__init__.py`: Initialisierungsdatei für das Paket
